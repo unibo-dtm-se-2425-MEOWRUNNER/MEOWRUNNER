@@ -1,3 +1,13 @@
+## 1.0.0 (2025-11-12)
+
+### Features
+
+* add folder with game visuals ([5741624](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/5741624d498a6dbc031037ff05cf2c46375a468e))
+
+### General maintenance
+
+* initialise repository renaming files and removing init workflow [skip ci] ([2267495](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/22674955b03d2ba3cbf0dcc00d6fb986b9e7b256))
+
 ## [2.4.0](https://github.com/aequitas-aod/template-python-project-poetry/compare/2.3.1...2.4.0) (2025-10-19)
 
 ### Features
