@@ -1,8 +1,28 @@
 import logging
-
+import os
+import sys
+import random
+import pygame
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('artifact')
+
+pygame.init()
+
+screen_height = 600
+screen_width = 1100
+screen = pygame.display.set_mode((screen_width, screen_height))
+
+cat_start = pygame.image.load(os.path.join("visuals/cat", "cat_start.png"))
+running = [pygame.image.load(os.path.join("visuals/cat", "cat_normal.png")),
+           pygame.image.load(os.path.join("visuals/cat", "cat_walk.png"))]
+jumping = pygame.image.load(os.path.join("visuals/cat", "cat_normal.png"))
+# i wanted to add another function with sound + also sounds for colisions
+
+rock = pygame.image.load(os.path.join("visuals/obsticles", "rock.png"))
+water = pygame.image.load(os.path.join("visuals/obsticles", "water.png"))
+
+road = pygame.image.load(os.path.join("visuals/other", "line.png"))
 
 # this is the initial module of your app
 # this is executed whenever some client-code is calling `import artifact` or `from artifact import ...`
