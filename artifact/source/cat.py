@@ -14,7 +14,7 @@ class Cat:
         self.cat_jump = False
 
         self.image = self.run_img[0]
-        self.dino_rect = self.image.get_rect()
+        self.cat_rect = self.image.get_rect()
         self.cat_rect.x = self.X_POS
         self.cat_rect.y = self.Y_POS
 
@@ -23,7 +23,7 @@ class Cat:
             self.duck()
         if self.cat_run:
             self.run()
-        if self.dino_jump:
+        if self.cat_jump:
             self.jump()
     
         # If UP is pressed and we aren't already jumping -> JUMP
