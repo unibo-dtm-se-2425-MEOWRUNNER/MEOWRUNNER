@@ -3,7 +3,7 @@ import random
 import os
 
 from source.config import SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN
-from source.visuals import ROAD, ROCK, WATER, RUNNING, DUCKING
+from source.visuals import ROAD, ROCK, WATER, RUNNING, DUCKING, START
 from source.cat import Cat
 from source.obstacles import Water, Rock # here i need to finish the code in visuals with the obsticles
 
@@ -79,4 +79,34 @@ def main():
         clock.tick(30)
         pygame.display.update()
 
+def menu(death_count):
+    global points
+    run = True
+    while run:
+        SCREEN.fill((255,255,255))
+        font = pygame.font.Font('freesansbold.ttf', 30)
+
+        if death_count == 0:
+            text = font.render("Press any Key to Start", True, (0,0,0))
+        elif death_count > 0:
+            text = font.render("Press any Key to Restart", True, (0,0,0))
+            score = font.render("Your Score:" + str(points), True, (0,0,0))
+            scoreRect = score.get_rect()
+            scoreRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50)
+            SCREEN.blit(score, scoreRect)
+        
+        textRect = text.get_rect()
+        textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+        SCREEN.blit(text, textRect)
+        SCREEN.blit(START, (SCREEN_WIDTH // 2 - 50, SCREEN_HEIGHT // 2 - 140))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                run = False
+            if event.type == pygame.KEYDOWN:
+                main()
+
+menu (death_count=0)
+                                      
 
