@@ -3,22 +3,26 @@ import random
 import os
 
 from source.config import SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN
-from source.visuals import ROAD, ROCK, WATER, RUNNING, DUCKING, START
+from source.visuals import START, DEAD, GAME_OVER, BACKGROUND, GORGE, PLANT, TREE
+from source.obstacles import Gorge, Plant, Tree # here i need to finish the code in visuals with the obsticles
 from source.cat import Cat
-from source.obstacles import Water, Rock # here i need to finish the code in visuals with the obsticles
+
+DEBUG_MODE = True  # set to False to hide collision boxes
 
 def main():
     global game_speed, x_pos_road, y_pos_road, points, obstacles
-    run = True
+    run = True 
     clock = pygame.time.Clock()
     player = Cat()
     # cloud = Cloud() #we dont have cloud but i migth add
     game_speed = 20
     x_pos_road = 0
-    y_pos_road = 380
+    y_pos_road = 432
     points = 0
     font = pygame.font.Font('freesansbold.ttf',20)
     obstacles = []
+    trees = []
+    tree_spawn_timer = 0
     death_count = 0
 
     def score ():
@@ -32,50 +36,65 @@ def main():
         textRect.center = (1000, 40)
         SCREEN.blit(text, textRect)
     
-    def road():
-        global x_pos_road, y_pos_road
-        image_width = ROAD.get_width()
-        SCREEN.blit(ROAD, (x_pos_road, y_pos_road))
-        SCREEN.blit(ROAD, (image_width + x_pos_road, y_pos_road))
-        if x_pos_road <= -image_width:
-            SCREEN.blit(ROAD, (image_width + x_pos_road, y_pos_road))
-            x_pos_road = 0
-        x_pos_road -= game_speed
-
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
         
-        SCREEN.fill ((255, 255, 255))
+        background_scaled = pygame.transform.scale(BACKGROUND, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        SCREEN.blit(background_scaled, (0, 0))
         userInput = pygame.key.get_pressed()
         
-        player.draw(SCREEN)
-        player.update(userInput)
+        collision = False
+        for obstacle in obstacles:
+            if player.cat_rect.colliderect(obstacle.rect):
+                collision = True
+                break
+        
+        for tree in trees:
+            tree.draw(SCREEN, debug=False)
+            tree.update(game_speed, trees)
 
-        if len(obstacles) == 0:
-            if random.randint(0, 2) == 0:
-                obstacles.append(Rock(ROCK)) 
-            elif random.randint (0, 2) == 1:
-                obstacles.append(Water(WATER))
-            #elif random.randint (0, 2) == 2:
-                #obstacles.append(bird(BIRD))
+        if collision:
+            player.image = DEAD
+            player.draw(SCREEN, debug=DEBUG_MODE)
+            game_over_rect = GAME_OVER.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2-100))
+            SCREEN.blit(GAME_OVER, game_over_rect)
+        else:
+            player.update(userInput)
+            player.draw(SCREEN, debug=DEBUG_MODE)
         
         for obstacle in obstacles:
-            obstacle.draw(SCREEN)
+            obstacle.draw(SCREEN, debug=DEBUG_MODE)
             obstacle.update(game_speed, obstacles)
-            if player.cat_rect.colliderect(obstacle.rect):
-                pygame.time.delay(2000)
-                death_count += 1
-                #menu(death_count)
+
+        if len(obstacles) == 0:
+            rand_choice = random.randint(0,1)
+            if rand_choice == 0:
+                obstacles.append(Plant(PLANT)) 
+            else: 
+                obstacles.append(Gorge(GORGE))
+
+        tree_spawn_timer += 1
+        if tree_spawn_timer > random.randint(40, 80):
+            can_spawn_tree = True
+
+            for obstacle in obstacles:
+                if abs(obstacle.rect.x - SCREEN_WIDTH)< 100:
+                    can_spawn_tree = False
+                    break
+            if can_spawn_tree:
+                trees.append(Tree(TREE))
+
+            tree_spawn_timer = 0         
+
+        if collision:
+            pygame.display.update()
+            pygame.time.delay(1000)    
+            death_count += 1
+            menu(death_count)             
         
-        road()
-
-        # cloud.draw(SCREEN)
-        # cloud.update(game_speed)
-
         score()
-
         clock.tick(30)
         pygame.display.update()
 
@@ -100,6 +119,7 @@ def menu(death_count):
         SCREEN.blit(text, textRect)
         SCREEN.blit(START, (SCREEN_WIDTH // 2 - 50, SCREEN_HEIGHT // 2 - 140))
         pygame.display.update()
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

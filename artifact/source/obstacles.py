@@ -1,40 +1,53 @@
+import random
+import pygame
+from source.config import SCREEN_WIDTH
+
 class Obstacle:
     def __init__(self, image, type):
         self.image = image
         self.type = type
-        self.rect = self.image[self.type].get_rect()
-        self.rect.x = SCREEN_WIDTH
+        full_rect = self.image.get_rect()
+        self.rect = pygame.Rect(
+            SCREEN_WIDTH,
+            0,
+            full_rect.width + 5,
+            full_rect.height - 50
+        )
+        self.image_y = 0
 
     def update (self, game_speed, obstacles):
         self.rect.x -= game_speed
         if self.rect.x <- self.rect.width:
-            obstacles.pop()
+            obstacles.pop(0)
     
-    def draw(self, SCREEN):
-        SCREEN.blit(self.image[self.type], self.rect)
+    def draw(self, SCREEN, debug=False):
+        SCREEN.blit(self.image, (self.rect.x, self.image_y))
+        
+        if debug:
+            pygame.draw.rect(SCREEN, (255, 0, 0), self.rect, 2)
 
 
-class Rock(Obstacle):
-    def __init__(self, image, type):
+class Plant(Obstacle):
+    def __init__(self, image):
         self.type = random.randint(0,2)
         super().__init__(image, self.type)
-        self.rect.y = 325
+        self.image_y = 382
+        self.rect.y = 380
 
-class Water(Obstacle):
-    def __init__(self, image, type):
+class Gorge(Obstacle):
+    def __init__(self, image):
         self.type = random.randint(0,2)
+        super().__init__(image, self.type)
+        self.rect.y = 420
+        self.image_y = 430
+
+class Tree(Obstacle):
+    def __init__(self, image):
+        self.type = 0
         super().__init__(image, self.type)
         self.rect.y = 300
+        self.image_y = 220
+        self.is_decoration = True
 
-# class Bird(Obstacle):
-    #def __init__(self, image, type):
-        #self.type = 0
-        #super().__init__(image, self.type)
-        #self.rect.y = 250
-        #self.index = 0
-    
-    #def draw(self, SCREEN):
-        #if self.index >= 9:
-            #self.index = 0
-        #SCREEN.blit(self.image[self.index//5], self.rect)
-        #self.index += 1
+    def draw(self, SCREEN, debug = False):
+        SCREEN.blit(self.image, (self.rect.x, self.image_y))

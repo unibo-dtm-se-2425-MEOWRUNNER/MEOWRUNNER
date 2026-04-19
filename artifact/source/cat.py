@@ -4,8 +4,8 @@ from source.visuals import DUCKING, RUNNING, JUMPING
 class Cat:
     #positions
     X_POS = 80
-    Y_POS = 310
-    Y_POS_DUCK = 340
+    Y_POS = 358    
+    Y_POS_DUCK = 365
     JUMP_VEL = 8.5
 
     def __init__(self):
@@ -76,5 +76,8 @@ class Cat:
             self.cat_jump = False
             self.jump_vel = self.JUMP_VEL
 
-    def draw (self, SCREEN):
-        SCREEN.blit(self.image, (self.cat_rect.x, self.cat_rect.y))         
+    def draw (self, SCREEN, debug=False):
+        SCREEN.blit(self.image, (self.cat_rect.x, self.cat_rect.y))
+
+        if debug:
+            pygame.draw.rect(SCREEN, (0, 255, 0), self.cat_rect, 2)      
