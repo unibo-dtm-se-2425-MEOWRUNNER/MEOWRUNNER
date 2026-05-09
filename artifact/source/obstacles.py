@@ -51,3 +51,14 @@ class Tree(Obstacle):
 
     def draw(self, SCREEN, debug = False):
         SCREEN.blit(self.image, (self.rect.x, self.image_y))
+
+class Bee(Obstacle):
+    def __init__(self, image):
+        self.type = 0
+        super().__init__(image, self.type)
+        self.rect.y = 350
+        self.image_y = 350
+
+        self.rect.width += 20
+        self.rect.height += 30
+        self.rect.x -= 10

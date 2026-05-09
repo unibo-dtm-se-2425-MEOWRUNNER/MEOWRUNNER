@@ -40,3 +40,5 @@ new_width_p = int(original_width_p * scale_factor_p)
 new_height_p = int(original_height_p * scale_factor_p)
 
 PLANT = pygame.transform.scale(plant_og, (new_width_p, new_height_p))
+
+BEE = pygame.image.load(os.path.join(VISUALS_DIR, "obsticles/bee.png"))

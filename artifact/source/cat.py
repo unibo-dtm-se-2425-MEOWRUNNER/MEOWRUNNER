@@ -55,9 +55,13 @@ class Cat:
 
     def duck(self):
         self.image = self.duck_img[self.step_index // 5]
-        self.cat_rect = self.image.get_rect()
+        original_height = self.image.get_height()
+
         self.cat_rect.x = self.X_POS
-        self.cat_rect.y = self.Y_POS_DUCK
+        self.cat_rect.width = self.image.get_width()
+        self.cat_rect.height = original_height - 30
+        self.cat_rect.y = self.Y_POS_DUCK + 15
+
         self.step_index += 1
 
     def run(self):
@@ -77,7 +81,10 @@ class Cat:
             self.jump_vel = self.JUMP_VEL
 
     def draw (self, SCREEN, debug=False):
-        SCREEN.blit(self.image, (self.cat_rect.x, self.cat_rect.y))
+        if self.cat_duck:
+            SCREEN.blit(self.image, (self.X_POS, self.Y_POS_DUCK))
+        else:
+            SCREEN.blit(self.image, (self.cat_rect.x, self.cat_rect.y))
 
         if debug:
             pygame.draw.rect(SCREEN, (0, 255, 0), self.cat_rect, 2)      

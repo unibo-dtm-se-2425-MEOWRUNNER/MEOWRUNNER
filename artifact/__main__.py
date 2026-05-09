@@ -3,8 +3,8 @@ import random
 import os
 
 from source.config import SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN
-from source.visuals import START, DEAD, GAME_OVER, BACKGROUND, GORGE, PLANT, TREE
-from source.obstacles import Gorge, Plant, Tree # here i need to finish the code in visuals with the obsticles
+from source.visuals import START, DEAD, GAME_OVER, BACKGROUND, GORGE, PLANT, TREE, BEE
+from source.obstacles import Gorge, Plant, Tree, Bee
 from source.cat import Cat
 
 DEBUG_MODE = True  # set to False to hide collision boxes
@@ -68,25 +68,36 @@ def main():
             obstacle.draw(SCREEN, debug=DEBUG_MODE)
             obstacle.update(game_speed, obstacles)
 
-        if len(obstacles) == 0:
-            rand_choice = random.randint(0,1)
-            if rand_choice == 0:
-                obstacles.append(Plant(PLANT)) 
-            else: 
-                obstacles.append(Gorge(GORGE))
-
         tree_spawn_timer += 1
         if tree_spawn_timer > random.randint(40, 80):
             can_spawn_tree = True
 
-            for obstacle in obstacles:
-                if abs(obstacle.rect.x - SCREEN_WIDTH)< 100:
-                    can_spawn_tree = False
-                    break
+            if len(obstacles) == 0: 
+                can_spawn_tree = False
+
             if can_spawn_tree:
                 trees.append(Tree(TREE))
 
-            tree_spawn_timer = 0         
+            tree_spawn_timer = 0 
+
+        if len(obstacles) == 0:
+            rand_choice = random.randint(0,2)
+            if rand_choice == 0:
+                obstacles.append(Plant(PLANT))
+            elif rand_choice == 1:
+                obstacles.append(Gorge(GORGE))
+            else:
+                obstacles.append(Bee(BEE))
+        
+        
+
+             #for obstacle in obstacles:
+                 #if isinstance(obstacle, Gorge):
+                     #if abs(obstacle.rect.x - SCREEN_WIDTH)< 250:
+                         #can_spawn_tree = False
+                         #break  
+            
+                    
 
         if collision:
             pygame.display.update()
