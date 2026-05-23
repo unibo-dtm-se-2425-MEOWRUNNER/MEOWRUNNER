@@ -1,1 +1,4 @@
 poetry==2.2.1
+pygame==2.6.1
+pytest==9.0.3
+pytest-cov==7.1.0
