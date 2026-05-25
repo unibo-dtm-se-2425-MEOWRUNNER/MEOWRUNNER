@@ -15,7 +15,7 @@ This 2D endless runner game was developed in Python using the Pygame library. Pl
 ## Project Setup
 1. **Download the Project:** Clone this repository or download the source code as a ZIP file and extract it on your computer.
 2. **Open Terminal:** Open your terminal or command prompt and navigate into the project's root folder.
-3. **Install Dependencies:** Install the required packages using the installation code block provided below.
+3. **Install Dependencies:** Install the required packages using the installation code provided below.
 4. **Launch the Game:** Run the execution command to start playing Meow Runner!
 
 ## Code Commands

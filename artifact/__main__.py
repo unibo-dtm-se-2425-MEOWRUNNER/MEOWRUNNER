@@ -7,14 +7,13 @@ from source.visuals import START, DEAD, GAME_OVER, BACKGROUND, GORGE, PLANT, TRE
 from source.obstacles import Gorge, Plant, Tree, Bee
 from source.cat import Cat
 
-DEBUG_MODE = True  # set to False to hide collision boxes
+DEBUG_MODE = False  # set to False to hide collision boxes
 
 def main():
     global game_speed, x_pos_road, y_pos_road, points, obstacles
     run = True 
     clock = pygame.time.Clock()
     player = Cat()
-    # cloud = Cloud() #we dont have cloud but i migth add
     game_speed = 20
     x_pos_road = 0
     y_pos_road = 432
