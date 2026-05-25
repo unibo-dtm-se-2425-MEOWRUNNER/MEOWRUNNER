@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "template-python-project-poetry"
+name = "Meow_Runner_Game"
 packages = [
     { include = "artifact" },
 ]
 version = "1.0.0"
-description = "A template for Python projects, using Poetry"
-authors = ["Giovanni Ciatto <giovanni.ciatto@unibo.it>"]
+description = "Meow Runner"
+authors = ["Veronika Angyalová <veronika.angyalova@studio.unibo.it>"]
 license = "Apache 2.0"
 readme = "README.md"
 
