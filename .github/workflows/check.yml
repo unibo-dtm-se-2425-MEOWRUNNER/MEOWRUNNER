@@ -41,6 +41,8 @@ jobs:
 
       - name: Test with Coverage
         shell: bash
+        env:
+          SDL_VIDEODRIVER: dummy
         run: |
           poetry run poe coverage
           poetry run poe coverage-report
