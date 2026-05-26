@@ -3,7 +3,7 @@ name = "Meow_Runner_Game"
 packages = [
     { include = "artifact" },
 ]
-version = "1.0.0"
+version = "1.1.0"
 description = "Meow Runner"
 authors = ["Veronika Angyalová <veronika.angyalova@studio.unibo.it>"]
 license = "Apache 2.0"

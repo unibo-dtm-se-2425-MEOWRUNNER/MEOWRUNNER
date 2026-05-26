@@ -1,3 +1,44 @@
+## [1.1.0](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/compare/1.0.0...1.1.0) (2026-05-26)
+
+### Features
+
+* add bee obstacle ([855b042](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/855b042f098b6e2104d3665a96e6b92a7f26d376))
+* add cat class and movement logic ([749b08d](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/749b08d75bc4ce4af7ecc20d6d3a6073198c85e8))
+* add class obstacle ([6f81744](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/6f8174409260fd7164886ba7d8890aa5752f67c0))
+* add imports and set up for visuals ([4c910d7](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/4c910d7251e860c322e76514b48c05cf51da2575))
+* add movement functions ([ecfdebf](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/ecfdebfee832b429dc5ea811d63d56c72b99dd6c))
+* add new cat visuals (ducking) ([378731a](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/378731a0e6d9a21c2dde2799e86446ddd07e0849))
+* add obstacle classes ([1294ad0](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/1294ad04b5b821b537affcdf87fa65544626a185))
+* implement core game loop ([5ae6c02](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/5ae6c02435f360306397ecefc4464ac494ded3da))
+* implement start and restart menu ([9afa5c5](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/9afa5c5f3d0c58bad8076aad157c246d5d457502))
+* improve game visuals ([aa27613](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/aa276136d1cc987b1e07012503345fbc22ac056c))
+* setup game visuals (animation lists and enviroment) ([35298ad](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/35298ada5c8d7e695775aef88d096042ec29c817))
+* setup project configuration ([0bfe5aa](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/0bfe5aa37d107cff564ee4c3343874e067c7a34c))
+
+### Bug Fixes
+
+* fix typos ([54654f8](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/54654f8fdb0e42e993ddcd81e1ab91259ae370cc))
+* fix typos ([c2a6d27](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/c2a6d27012722cd7496f13e91a6128c206f01391))
+
+### Documentation
+
+* add README documentation for project setup ([eee4934](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/eee49344ee5d7dbed2b560edb873e64cea95102c))
+
+### Tests
+
+* add unit tests for game mechanics ([0b029b5](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/0b029b5a7eb0b5521f668eea0cf6b85198803458))
+
+### General maintenance
+
+* deleting pytest dependencies ([0bca970](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/0bca970b3b2092480d6904190da3b3d4aabf7ce2))
+* fix missing dependencies ([6e58078](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/6e580788b3ecd7b01328a48f044d16c468539c9e))
+* redo tests form pytest to unittest ([30cfe34](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/30cfe34f588e746ac5111faae1a9254c4639ccc0))
+* regenerating poetry.lock ([b79a454](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/b79a45459fbb59df3fc36d41875bdc09acf81fa2))
+* reorganise project structure to source folder ([cd166cf](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/cd166cf3ee3ecc399744fb60a05eb4717e21ba13))
+* update poetry.lock ([02642d2](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/02642d23cf5b3f0f6f619163fd0280a5404da507))
+* update requirements.txt ([7f64338](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/7f64338dd701ec8af01c19f95f5cebdf4a6b6428))
+* updating pyproject.toml ([1924cf3](https://github.com/unibo-dtm-se-2425-MEOWRUNNER/MEOWRUNNER/commit/1924cf3ee1fc8cba3a8160091911c9bbadcd84b5))
+
 ## 1.0.0 (2025-11-12)
 
 ### Features
